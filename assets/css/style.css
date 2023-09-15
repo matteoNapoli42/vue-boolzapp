@@ -107,6 +107,7 @@ body
   padding: 0.5rem;
   background-color: var(--bz-white);
   border: 1px solid var(--bz-gray-light);
+  cursor: pointer;
 }
 
 .contact.active

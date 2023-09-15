@@ -2,13 +2,32 @@
 Descrizione:
 Iniziamo a lavorare alla nostra replica della nota app di messaggistica. L'esercitazione sará divisa in piú giornate, oggi iniziamo a lavorare alla prima milestone che vi
 riporto di seguito:
-Milestone 1
-Replica della grafica con la possibilità di avere messaggi scritti dall'utente (verdi) e dall'interlocutore (bianco) assegnando due classi CSS diverse
-Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare nome e immagine di ogni contatto
-Consigli:
-lavorate ad una task per volta, finita la prima passate alla seconda
-ragionate con calma sugli strumenti necessari per svolgere la seconda task,
-leggete le pagine della documentazione che vi ho indicato oggi in classe.
+
+MILESTONE 1
+●Replica della grafica con la possibilità di avere messaggi scritti dall'utente (verdi) e dall'interlocutore (bianco) assegnando due classi CSS diverse
+●Visualizzazione dinamica della lista contatti: tramite la direttiva v-for, visualizzare nome e immagine di ogni contatto
+
+MILESTONE 2
+● Visualizzazione dinamica dei messaggi: tramite la direttiva v-for, visualizzare tutti i
+messaggi relativi al contatto attivo all’interno del pannello della conversazione
+● Click sul contatto mostra la conversazione del contatto cliccato
+
+MILESTONE 3
+● Aggiunta di un messaggio: l’utente scrive un testo nella parte bassa e digitando
+“enter” il testo viene aggiunto al thread sopra, come messaggio verde
+● Risposta dall’interlocutore: ad ogni inserimento di un messaggio, l’utente riceverà
+un “ok” come risposta, che apparirà dopo 1 secondo.
+
+MILESTONE 4
+● Ricerca utenti: scrivendo qualcosa nell’input a sinistra, vengono visualizzati solo i
+contatti il cui nome contiene le lettere inserite (es, Marco, Matteo Martina -> Scrivo
+“mar” rimangono solo Marco e Martina)
+
+MILESTONE 5 - opzionale
+● Cancella messaggio: cliccando sul messaggio appare un menu a tendina che
+permette di cancellare il messaggio selezionato
+● Visualizzazione ora e ultimo messaggio inviato/ricevuto nella lista dei contatti
+
  */
 
 const {
@@ -46,6 +65,7 @@ const {
             ],
           },
           {
+            id: 2,
             name: 'Fabio',
             avatar: '_2',
             visible: true,
@@ -67,6 +87,7 @@ const {
             ],
           },
           {
+            id: 3,
             name: 'Samuele',
             avatar: '_3',
             visible: true,
@@ -88,6 +109,7 @@ const {
             ],
           },
           {
+            id: 4,
             name: 'Alessandro B.',
             avatar: '_4',
             visible: true,
@@ -104,6 +126,7 @@ const {
             ],
           },
           {
+            id: 5,
             name: 'Alessandro L.',
             avatar: '_5',
             visible: true,
@@ -120,6 +143,7 @@ const {
             ],
           },
           {
+            id: 6,
             name: 'Claudia',
             avatar: '_6',
             visible: true,
@@ -141,6 +165,7 @@ const {
             ],
           },
           {
+            id: 7,
             name: 'Federico',
             avatar: '_7',
             visible: true,
@@ -157,6 +182,7 @@ const {
             ],
           },
           {
+            id: 8,
             name: 'Davide',
             avatar: '_8',
             visible: true,
@@ -179,5 +205,23 @@ const {
           }
         ]
       }
+    },
+
+    methods : 
+    {
+        printMessages: function(element,index){
+           console.log(this.contacts[index].messages);
+           return this.contacts[index].messages;
+        },
+
+        selectContact: function(elem,index){
+            console.log(elem);
+            for(let i=0;i<this.contacts.length; i++)
+            {
+                if(this.contacts[i].id === elem.id)
+                    return this.activeContact=i;
+            }   
+               
+        }
     }
   }).mount('#app')
