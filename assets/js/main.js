@@ -36,6 +36,7 @@ const {
   createApp({
     data() {
       return {
+        domPortion : document.getElementsByClassName("messages")[0],
         me: {
           avatar: '_io',
           name: 'Sofia'
@@ -65,7 +66,6 @@ const {
             ],
           },
           {
-            id: 2,
             name: 'Fabio',
             avatar: '_2',
             visible: true,
@@ -87,7 +87,6 @@ const {
             ],
           },
           {
-            id: 3,
             name: 'Samuele',
             avatar: '_3',
             visible: true,
@@ -109,7 +108,6 @@ const {
             ],
           },
           {
-            id: 4,
             name: 'Alessandro B.',
             avatar: '_4',
             visible: true,
@@ -126,7 +124,6 @@ const {
             ],
           },
           {
-            id: 5,
             name: 'Alessandro L.',
             avatar: '_5',
             visible: true,
@@ -143,7 +140,6 @@ const {
             ],
           },
           {
-            id: 6,
             name: 'Claudia',
             avatar: '_6',
             visible: true,
@@ -165,7 +161,6 @@ const {
             ],
           },
           {
-            id: 7,
             name: 'Federico',
             avatar: '_7',
             visible: true,
@@ -182,7 +177,6 @@ const {
             ],
           },
           {
-            id: 8,
             name: 'Davide',
             avatar: '_8',
             visible: true,
@@ -209,19 +203,38 @@ const {
 
     methods : 
     {
-        printMessages: function(element,index){
-           console.log(this.contacts[index].messages);
-           return this.contacts[index].messages;
+        selectContact: function(elem,index){
+            console.log(this.contacts[index]);
+            const domPortion = document.getElementsByClassName("messages")[0];
+            domPortion.innerHTML = "";
+            this.activeContact=index;
+            return this.printMessages(index);
         },
 
-        selectContact: function(elem,index){
-            console.log(elem);
-            for(let i=0;i<this.contacts.length; i++)
+        printMessages: function(index){
+            const domPortion = document.getElementsByClassName("messages")[0];
+            console.log(this.contacts[index].messages.length);
+            for(let i=0; i<this.contacts[index].messages.length;i++)
             {
-                if(this.contacts[i].id === elem.id)
-                    return this.activeContact=i;
-            }   
-               
-        }
+                    if(this.contacts[index].messages[i].status == 'received')
+                    {
+                        console.log(this.contacts[index].messages[i]);
+                        domPortion.innerHTML += 
+                        `<div class="received">
+                            ${this.contacts[index].messages[i].message}
+                        </div>`;
+                        console.log("ahio");
+                    }
+                    else
+                    {
+                        console.log(this.contacts[index].messages[i]);
+                        domPortion.innerHTML += 
+                        `<div class="sent">
+                            ${this.contacts[index].messages[i].message}
+                        </div>`;
+                        console.log("ahio2");
+                    }
+            }
+        },
     }
   }).mount('#app')
