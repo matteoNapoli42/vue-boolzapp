@@ -293,15 +293,32 @@ const {
         },
 
         filterContacts : function(userInput){
-          console.log(userInput);
+          userInput=this.formatUserContactSearch(userInput);
+          console.log(userInput + " usciti dalla formattazione");
           for(let i=0; i<this.contacts.length;i++)
           {
-            if(!this.contacts[i].name.includes(userInput,0))
+            if(!userInput.includes(this.contacts[i].name.substring(0,userInput.length)))
               this.contacts[i].visible= false;
+            else
+              this.contacts[i].visible= true;
           }
           if(userInput=="")
             for(let i=0; i<this.contacts.length;i++)
               this.contacts[i].visible= true;
-          }
+          },
+        
+          formatUserContactSearch: function (userInput) {
+            console.log("Partita");
+            let formattedInput;
+            if (userInput === "") {
+                return "";
+            } else {
+                formattedInput = userInput.toLowerCase();
+                formattedInput = formattedInput.charAt(0).toUpperCase() + formattedInput.slice(1);
+                console.log(formattedInput);
+                console.log(userInput);
+                return formattedInput;
+            }
+        },
     }
   }).mount('#app')
