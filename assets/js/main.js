@@ -36,7 +36,7 @@ const {
   createApp({
     data() {
       return {
-        domPortion : document.getElementsByClassName("messages")[0],
+        inputMessage : "",
         me: {
           avatar: '_io',
           name: 'Sofia'
@@ -203,15 +203,33 @@ const {
 
     methods : 
     {
-        selectContact: function(elem,index){
+      /* OLD SELECTCONTACT VERSION
+      selectContact: function(elem,index){
             console.log(this.contacts[index]);
             const domPortion = document.getElementsByClassName("messages")[0];
             domPortion.innerHTML = "";
             this.activeContact=index;
             return this.printMessages(index);
         },
+        */
 
-        printMessages: function(index){
+        //Funzione per aggiornare il layout con i dati riguardanti il contatto selezionato
+        selectContact : function(index)
+        {
+          this.activeContact=index; //aggiorno la variabile globale riguardante il contatto attivo
+          console.log(this.contacts[index]);
+          //prendo la porzione di documento riguardante i messaggi
+          const messageDom = document.getElementsByClassName("messages")[0];
+          messageDom.innerHTML = ""; //la azzero
+
+          for(let i=0; i<this.contacts[index].messages.length;i++)
+          {
+            this.printMessages(this.contacts[index].messages[i],messageDom);
+          }
+        },
+
+        /*OLD PRINTMESSAGES VERSION
+        printMessages: function(index,elem){
             const domPortion = document.getElementsByClassName("messages")[0];
             console.log(this.contacts[index].messages.length);
             for(let i=0; i<this.contacts[index].messages.length;i++)
@@ -235,6 +253,42 @@ const {
                         console.log("ahio2");
                     }
             }
+        },*/
+        printMessages : function(elem,domPortion)
+        {
+          if(elem.status == 'received')
+          {
+            domPortion.innerHTML += 
+            `<div class="received">
+            ${elem.message}
+            </div>`;
+            console.log("ricevuto");
+          }
+          else
+          {
+            domPortion.innerHTML += 
+            `<div class="sent">
+            ${elem.message}
+            </div>`;
+            console.log("mandato");
+          }
         },
+
+        newMessage : function(userInput){        
+          console.log(userInput);
+          const messageDom = document.getElementsByClassName("messages")[0];
+          const newMessage = 
+          {
+            date : new Date().getTime,
+            message: userInput,
+            status: 'sent'
+          }
+         console.log(newMessage.status);
+         this.printMessages(newMessage,messageDom);
+         this.inputMessage = "";
+         setTimeout(() => {
+          this.printMessages({ message: "ok", status: "received" }, messageDom);
+        }, 1000);
+        }
     }
   }).mount('#app')

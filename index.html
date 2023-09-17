@@ -44,7 +44,7 @@
         <div class="searcharea"></div>
         <!-- /.searcharea -->
         <div class="contacts">
-          <div class="contact" :class="index === activeContact ? 'active' : ''" v-for="(contact, index) in contacts " @click.prevent="selectContact(contact,index)">
+          <div class="contact" :class="index === activeContact ? 'active' : ''" v-for="(contact, index) in contacts " @click.prevent="selectContact(index)">
             <div class="avatar">
               <img :src="`./assets/img/avatar${contact.avatar}.jpg`" alt="">
             </div>
@@ -56,7 +56,7 @@
 
 
         </div>
-        <!-- /.conacts -->
+        <!-- /.contacts -->
       </div>
       <!-- /.left -->
       <div class="right">
@@ -76,7 +76,8 @@
         </div>
         <!-- /.active_contact -->
         <div class="messages">
-         <!--div class="sent">
+         <!--
+          div class="sent">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, veritatis.
           </div>
              <div class="sent">
@@ -84,14 +85,15 @@
           </div>
           <div class="received">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis, veritatis.
-          </div>-->
+          </div>
+        -->
         </div>
         <!-- /.messages -->
         <div class="toolbar">
           <div class="emoji">
             <i class="fa-solid fa-smile"></i>
           </div>
-          <input type="text">
+          <input type="text" v-model ="inputMessage" @keyup.enter="newMessage(inputMessage)" id="messageBar">
           <div class="mic">
             <i class="fa-solid fa-microphone"></i>
           </div>
