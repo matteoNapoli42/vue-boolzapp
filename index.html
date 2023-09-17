@@ -54,7 +54,8 @@
               <div class="text">
                 {{contact.name}}
               </div>
-              <div>{{contact.messages[1].date}}</div>
+              <div>{{contact.messages[contact.messages.length-1].date.substr(12,16)}}</div>
+              <div>{{contact.messages[contact.messages.length-1].message}}</div>
             </div>
           </div>
         </div>
