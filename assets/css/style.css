@@ -59,6 +59,10 @@ body
 
 }
 
+.d-flex{
+  display: flex;
+}
+
 /* #endregion common */
 
 /* #region debug */

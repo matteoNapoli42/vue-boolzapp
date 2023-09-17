@@ -41,8 +41,27 @@
           </div>
         </div>
         <!-- /.notifications -->
-        <div class="searcharea"></div>
-        <!-- /.searcharea -->
+        <div class="searcharea">
+          <input type="text" v-model="searchedUser" @input="filterContacts(searchedUser)" >
+        </div>
+        
+        <div class="contacts">
+          <div :class="index === activeContact ? 'active' : ''" v-for="(contact, index) in contacts " @click.prevent="selectContact(index)">
+            <div v-if="contact.visible===true" class="contact">
+              <div class="avatar">
+                <img :src="`./assets/img/avatar${contact.avatar}.jpg`" alt="">
+              </div>
+              <div class="text">
+                {{contact.name}}
+              </div>
+              <div>{{contact.messages[1].date}}</div>
+            </div>
+          </div>
+        </div>
+        
+        
+        
+        <!-- /.searcharea
         <div class="contacts">
           <div class="contact" :class="index === activeContact ? 'active' : ''" v-for="(contact, index) in contacts " @click.prevent="selectContact(index)">
             <div class="avatar">
@@ -52,10 +71,10 @@
               {{contact.name}}
             </div>
           </div>
-  
+         -->
 
 
-        </div>
+        
         <!-- /.contacts -->
       </div>
       <!-- /.left -->

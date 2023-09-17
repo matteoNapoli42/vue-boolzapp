@@ -197,7 +197,8 @@ const {
             }
             ],
           }
-        ]
+        ],
+        searchDom :  document.getElementsByClassName("searcharea"),
       }
     },
 
@@ -289,6 +290,18 @@ const {
          setTimeout(() => {
           this.printMessages({ message: "ok", status: "received" }, messageDom);
         }, 1000);
-        }
+        },
+
+        filterContacts : function(userInput){
+          console.log(userInput);
+          for(let i=0; i<this.contacts.length;i++)
+          {
+            if(!this.contacts[i].name.includes(userInput,0))
+              this.contacts[i].visible= false;
+          }
+          if(userInput=="")
+            for(let i=0; i<this.contacts.length;i++)
+              this.contacts[i].visible= true;
+          }
     }
   }).mount('#app')
