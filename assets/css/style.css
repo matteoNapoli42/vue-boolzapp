@@ -63,6 +63,9 @@ body
   display: flex;
 }
 
+.w-75{
+  width: 75%;
+}
 /* #endregion common */
 
 /* #region debug */
