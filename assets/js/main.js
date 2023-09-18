@@ -222,11 +222,9 @@ const {
           //prendo la porzione di documento riguardante i messaggi
           const messageDom = document.getElementsByClassName("messages")[0];
           messageDom.innerHTML = ""; //la azzero
-
           for(let i=0; i<this.contacts[index].messages.length;i++)
-          {
             this.printMessages(this.contacts[index].messages[i],messageDom);
-          }
+          
         },
 
         /*OLD PRINTMESSAGES VERSION
@@ -257,6 +255,7 @@ const {
         },*/
         printMessages : function(elem,domPortion)
         {
+          console.log(elem);
           if(elem.status == 'received')
           {
             domPortion.innerHTML += 
@@ -277,10 +276,12 @@ const {
 
         newMessage : function(userInput){        
           console.log(userInput);
+          if(userInput==="")//se il messaggio dell utente è vuoto allora non fa nulla
+            return
           const messageDom = document.getElementsByClassName("messages")[0];
           const newMessage = 
           {
-            date : new Date().getTime,
+            date : new Date().getTime(),
             message: userInput,
             status: 'sent'
           }
@@ -310,9 +311,9 @@ const {
           formatUserContactSearch: function (userInput) {
             console.log("Partita");
             let formattedInput;
-            if (userInput === "") {
+            if (userInput === "") 
                 return "";
-            } else {
+            else {
                 formattedInput = userInput.toLowerCase();
                 formattedInput = formattedInput.charAt(0).toUpperCase() + formattedInput.slice(1);
                 console.log(formattedInput);
