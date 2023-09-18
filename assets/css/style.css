@@ -58,14 +58,6 @@ body
   }
 
 }
-
-.d-flex{
-  display: flex;
-}
-
-.w-75{
-  width: 75%;
-}
 /* #endregion common */
 
 /* #region debug */
@@ -265,3 +257,39 @@ body
 
 
 /* #endregion Messages section */
+
+
+
+/*Aggiunte al layout di base*/
+
+.d-flex{
+  display: flex;
+}
+
+.w-100{
+  width: 100%;
+}
+
+#orario{
+  border:  2px solid red;
+  text-align: end;
+  border-radius: 100%;
+  padding: 5px 2px 5px 2px;
+}
+
+#ultimoMessaggio{
+  border:  2px solid blue;
+  margin-top: 15px;
+}
+
+.contact{
+  border: 2px solid grey;
+}
+
+.searcharea{
+  margin-left: -16px;
+}
+
+.p-xy{
+  padding: 5px;
+}

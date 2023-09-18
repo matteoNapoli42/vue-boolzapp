@@ -42,7 +42,7 @@
         </div>
         <!-- /.notifications -->
         <div class="searcharea">
-          <input type="text" v-model="searchedUser" @input="filterContacts(searchedUser)" class="w-75">
+          <input type="text" v-model="searchedUser" @input="filterContacts(searchedUser)" class="w-100 p-xy" placeholder="Cerca contatto">
         </div>
         
         <div class="contacts">
@@ -53,9 +53,9 @@
               </div>
               <div class="text">
                 {{contact.name}}
+                <div id="ultimoMessaggio">{{contact.messages[contact.messages.length-1].message}}</div>
               </div>
-              <div>{{contact.messages[contact.messages.length-1].date.substr(12,16)}}</div>
-              <div>{{contact.messages[contact.messages.length-1].message}}</div>
+              <div id="orario">{{contact.messages[contact.messages.length-1].date.slice(12,16)}}</div>
             </div>
           </div>
         </div>

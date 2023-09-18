@@ -294,7 +294,7 @@ const {
 
         filterContacts : function(userInput){
           userInput=this.formatUserContactSearch(userInput);
-          console.log(userInput + " usciti dalla formattazione");
+          console.log(userInput + " ::usciti dalla formattazione");
           for(let i=0; i<this.contacts.length;i++)
           {
             if(!userInput.includes(this.contacts[i].name.substring(0,userInput.length)))
@@ -316,7 +316,6 @@ const {
                 formattedInput = userInput.toLowerCase();
                 formattedInput = formattedInput.charAt(0).toUpperCase() + formattedInput.slice(1);
                 console.log(formattedInput);
-                console.log(userInput);
                 return formattedInput;
             }
         },
