@@ -219,13 +219,6 @@ const {
         {
           this.activeContact=index; //aggiorno la variabile globale riguardante il contatto attivo
           console.log(this.contacts[index]);
-          //prendo la porzione di documento riguardante i messaggi
-          
-          /*const messageDom = document.getElementsByClassName("messages")[0];
-          messageDom.innerHTML = ""; //la azzero
-          for(let i=0; i<this.contacts[index].messages.length;i++)
-            this.printMessages(this.contacts[index].messages[i],messageDom);*/
-          
         },
 
         /*OLD PRINTMESSAGES VERSION
