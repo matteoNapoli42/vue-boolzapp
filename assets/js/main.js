@@ -198,7 +198,6 @@ const {
             ],
           }
         ],
-        searchDom :  document.getElementsByClassName("searcharea"),
       }
     },
 
@@ -320,7 +319,6 @@ const {
         },
 
         filterContacts (userInput){
-          console.log(userInput + " ::usciti dalla formattazione");
           for(let i=0; i<this.contacts.length;i++)
           {
             if(!this.contacts[i].name.includes(userInput))
@@ -333,7 +331,7 @@ const {
               this.contacts[i].visible= true;
           },
         
-          formatUserContactSearch(userInput) {
+          /*formatUserContactSearch(userInput) {
             console.log("Partita");
             let formattedInput;
             if (userInput === "") 
@@ -344,6 +342,6 @@ const {
                 console.log(formattedInput);
                 return formattedInput;
             }
-        },
+        },*/
     }
   }).mount('#app')
