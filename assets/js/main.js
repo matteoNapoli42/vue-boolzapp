@@ -284,6 +284,7 @@ const {
           this.contacts[this.activeContact].messages.push(newMessage);
           setTimeout(() => {
             let response = { message : "ok", status: "received", date : this.formatDate()};
+            console.log(response.date);
             this.contacts[this.activeContact].messages.push(response);
           }, 1000);
         },
@@ -300,9 +301,20 @@ const {
           console.log(year);
           const hours = dateInMs.getHours();
           console.log(hours);
-          const minutes = dateInMs.getMinutes();
-          console.log(minutes);
-          const formattedDate =  `${day}/${month}/${year} ${hours}:${minutes}` 
+          let minutes = dateInMs.getMinutes();
+          
+          let seconds = dateInMs.getSeconds();
+          if(parseInt(minutes)<10)
+          {
+            minutes = "0"+minutes;
+            console.log(minutes);
+          }
+          if (parseInt(seconds)<10) {
+            seconds = "0"+seconds;
+            console.log(seconds);
+          }
+          const formattedDate =  `"${day}/${month}/${year} ${hours}:${minutes}:${seconds}"`;
+
           console.log(formattedDate);
           return formattedDate;
         },
