@@ -220,10 +220,11 @@ const {
           this.activeContact=index; //aggiorno la variabile globale riguardante il contatto attivo
           console.log(this.contacts[index]);
           //prendo la porzione di documento riguardante i messaggi
-          const messageDom = document.getElementsByClassName("messages")[0];
+          
+          /*const messageDom = document.getElementsByClassName("messages")[0];
           messageDom.innerHTML = ""; //la azzero
           for(let i=0; i<this.contacts[index].messages.length;i++)
-            this.printMessages(this.contacts[index].messages[i],messageDom);
+            this.printMessages(this.contacts[index].messages[i],messageDom);*/
           
         },
 
@@ -253,7 +254,8 @@ const {
                     }
             }
         },*/
-        printMessages : function(elem,domPortion)
+        
+        printMessages(elem,domPortion)
         {
           console.log(elem);
           if(elem.status == 'received')
@@ -274,7 +276,7 @@ const {
           }
         },
 
-        newMessage : function(userInput){        
+        newMessage(userInput){        
           console.log(userInput);
           if(userInput==="")//se il messaggio dell utente è vuoto allora non fa nulla
             return
@@ -293,12 +295,11 @@ const {
         }, 1000);
         },
 
-        filterContacts : function(userInput){
-          userInput=this.formatUserContactSearch(userInput);
+        filterContacts (userInput){
           console.log(userInput + " ::usciti dalla formattazione");
           for(let i=0; i<this.contacts.length;i++)
           {
-            if(!userInput.includes(this.contacts[i].name.substring(0,userInput.length)))
+            if(!this.contacts[i].name.includes(userInput))
               this.contacts[i].visible= false;
             else
               this.contacts[i].visible= true;
@@ -308,7 +309,7 @@ const {
               this.contacts[i].visible= true;
           },
         
-          formatUserContactSearch: function (userInput) {
+          formatUserContactSearch(userInput) {
             console.log("Partita");
             let formattedInput;
             if (userInput === "") 

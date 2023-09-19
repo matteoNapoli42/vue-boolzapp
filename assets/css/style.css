@@ -271,23 +271,11 @@ body
 }
 
 #orario{
-  border:  2px solid red;
   text-align: end;
-  border-radius: 100%;
-  padding: 5px 2px 5px 2px;
 }
 
 #ultimoMessaggio{
-  border:  2px solid blue;
   margin-top: 15px;
-}
-
-.contact{
-  border: 2px solid grey;
-}
-
-.searcharea{
-  margin-left: -16px;
 }
 
 .p-xy{
