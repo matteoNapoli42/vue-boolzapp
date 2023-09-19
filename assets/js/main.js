@@ -247,7 +247,7 @@ const {
                     }
             }
         },*/
-        
+        /*
         printMessages(elem,domPortion)
         {
           console.log(elem);
@@ -267,25 +267,44 @@ const {
             </div>`;
             console.log("mandato");
           }
-        },
+        },*/
 
         newMessage(userInput){        
           console.log(userInput);
           if(userInput==="")//se il messaggio dell utente è vuoto allora non fa nulla
             return
-          const messageDom = document.getElementsByClassName("messages")[0];
           const newMessage = 
           {
-            date : new Date().getTime(),
+            date : this.formatDate(),
             message: userInput,
             status: 'sent'
           }
-         console.log(newMessage.status);
-         this.printMessages(newMessage,messageDom);
-         this.inputMessage = "";
-         setTimeout(() => {
-          this.printMessages({ message: "ok", status: "received" }, messageDom);
-        }, 1000);
+          console.log(newMessage.date);
+          console.log(newMessage.status);
+          this.contacts[this.activeContact].messages.push(newMessage);
+          setTimeout(() => {
+            let response = { message : "ok", status: "received", date : this.formatDate()};
+            this.contacts[this.activeContact].messages.push(response);
+          }, 1000);
+        },
+
+        formatDate()
+        {
+          const dateInMs = new Date();
+          console.log(dateInMs);
+          const day = dateInMs.getDate();
+          console.log(day);
+          const month = dateInMs.getMonth()+1;
+          console.log(month);
+          const year=dateInMs.getFullYear();
+          console.log(year);
+          const hours = dateInMs.getHours();
+          console.log(hours);
+          const minutes = dateInMs.getMinutes();
+          console.log(minutes);
+          const formattedDate =  `${day}/${month}/${year} ${hours}:${minutes}` 
+          console.log(formattedDate);
+          return formattedDate;
         },
 
         filterContacts (userInput){
